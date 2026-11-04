@@ -25,29 +25,6 @@
 | 模型 | `qwen2.5-1.5b-instruct-q4_k_m.gguf` |
 | 其它环境 | 未使用 Ollama；未部署 ruyi-server（源码树在 `/home/chu/ruyi-workspace`） |
 
-**引擎启动命令**（终端中执行，窗口需保持打开）：
-
-```bash
-/home/chu/llama.cpp/build/bin/llama-server \
-  -m /home/chu/llama.cpp/models/qwen2.5-1.5b-instruct-q4_k_m.gguf \
-  -c 4096 --port 8080 \
-  --alias qwen2.5-1.5b-instruct-q4_k_m
-```
-
-窗口中出现 `listening on http://127.0.0.1:8080` 表示启动成功，按 `Ctrl+C` 停止。
-
-**插件设置**（`Ctrl+,` 搜 RuyiCode；对应 `~/.config/Code/User/settings.json`）：
-
-- Engine Type：`llama-server`
-- Endpoint：`http://127.0.0.1:8080/v1`
-- Llama.cpp 根目录：`/home/chu/llama.cpp/build`
-- llama-server 路径：`/home/chu/llama.cpp/build/bin/llama-server`
-- 模型路径：`/home/chu/llama.cpp/models/qwen2.5-1.5b-instruct-q4_k_m.gguf`
-- 上下文 / 最大输出：`numCtx = 4096`、`maxTokens = 2048`
-
-**测试入口**：活动栏 RuyiCode 图标 →「AI 对话」面板（快捷键 `Ctrl+Alt+L`）。
-
-> **前置说明**：本插件在冷启动时不会自动加载（该现象已实测复现，列于「六、后续测试计划」中的 **1.2-补**）。因此每次测试前需先点击一次活动栏 RuyiCode 图标，确保 CodeLens、内联补全与命令均已注册，否则会把"未加载"误判为功能缺陷。
 
 ---
 ## 二、缺陷汇总
